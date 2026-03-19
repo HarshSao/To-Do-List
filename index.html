@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>To-Do List</h1>
+    <input placeholder="Enter Your Task" />
+    <button>Add Task!</button>
+    <ul>
+      <li>Code <button class="delete">Delete</button></li>
+      <li>Exercise <button class="delete">Delete</button></li>
+    </ul>
+
+    <script>
+      let btn = document.querySelector("button");
+      let ul = document.querySelector("ul");
+      let inp = document.querySelector("input");
+
+      btn.addEventListener("click", () => {
+        let item = document.createElement("li");
+        item.innerText = inp.value;
+
+        let dltBtn = document.createElement("button");
+        dltBtn.innerText = "Delete";
+        dltBtn.classList.add("delete");
+
+        item.appendChild(dltBtn);
+        ul.appendChild(item);
+        inp.value = "";
+      });
+
+      ul.addEventListener("click", (e) => {
+        if (e.target.nodeName == "BUTTON") {
+          let listItem = e.target.parentElement;
+          listItem.remove();
+        }
+      });
+    </script>
+  </body>
+</html>
